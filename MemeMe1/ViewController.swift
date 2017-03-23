@@ -34,6 +34,7 @@ class MemeV1ViewController: UIViewController,  UIImagePickerControllerDelegate, 
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var bottomToolBar: UIToolbar!
+    @IBOutlet weak var instructions: UITextView!
     
     // MARK: Actions for buttons
     
@@ -101,6 +102,9 @@ class MemeV1ViewController: UIViewController,  UIImagePickerControllerDelegate, 
         if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             imagePickerView.image = image
             shareButton.isEnabled = true
+            topTextField.text = "TOP"
+            bottomTextField.text = "BOTTOM"
+            instructions.isHidden = true
         }
     }
     
@@ -119,14 +123,12 @@ class MemeV1ViewController: UIViewController,  UIImagePickerControllerDelegate, 
         // Setup top text field properties
         topTextField.defaultTextAttributes = memeTextAttributes
         topTextField.textAlignment = .center
-        topTextField.text = "TOP"
         topTextField.delegate = self
         topTextField.backgroundColor = UIColor.clear
         
         // Setup bottom text field properties
         bottomTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.textAlignment = .center
-        bottomTextField.text = "BOTTOM"
         bottomTextField.delegate = self
         bottomTextField.backgroundColor = UIColor.clear
         
