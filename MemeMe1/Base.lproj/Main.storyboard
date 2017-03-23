@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina5_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,17 +19,17 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M3j-cL-6F1">
-                                <rect key="frame" x="0.0" y="218" width="414" height="300"/>
+                                <rect key="frame" x="0.0" y="7" width="736" height="400"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="eOu-VQ-IQp"/>
+                                    <constraint firstAttribute="height" constant="400" id="eOu-VQ-IQp"/>
                                 </constraints>
                             </imageView>
                             <textField clipsSubviews="YES" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g1v-CT-Xzd">
-                                <rect key="frame" x="20" y="218" width="374" height="60"/>
+                                <rect key="frame" x="20" y="57" width="696" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="gMB-g2-LdF"/>
@@ -38,7 +38,8 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C8z-VF-pZX">
-                                <rect key="frame" x="0.0" y="692" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="370" width="736" height="44"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="AOV-5l-eax"/>
                                 </constraints>
@@ -65,7 +66,7 @@
                                 </items>
                             </toolbar>
                             <textField clipsSubviews="YES" tag="1" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mtl-gW-QgW">
-                                <rect key="frame" x="20" y="458" width="374" height="60"/>
+                                <rect key="frame" x="20" y="297" width="696" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="zcq-gL-y2l"/>
@@ -75,7 +76,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Please take a picture or select one from your albums." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9k7-Qk-GJ5">
-                                <rect key="frame" x="57" y="318" width="300" height="100"/>
+                                <rect key="frame" x="218" y="157" width="300" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="SKC-fY-keP"/>
