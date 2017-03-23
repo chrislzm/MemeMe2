@@ -8,14 +8,37 @@
 
 import UIKit
 
-class ViewController: UIViewController,  UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController,  UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
+    @IBOutlet weak var topTextField: UITextField!
+    
+    @IBOutlet weak var bottomTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let memeTextAttributes:[String:Any] = [
+            NSStrokeColorAttributeName: UIColor.black,
+            NSForegroundColorAttributeName: UIColor.white,
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSStrokeWidthAttributeName: -3.0]
+        
+        topTextField.defaultTextAttributes = memeTextAttributes
+        topTextField.textAlignment = .center
+        topTextField.text = "TOP"
+        topTextField.delegate = self
+        topTextField.backgroundColor = UIColor.clear
+
+        bottomTextField.defaultTextAttributes = memeTextAttributes
+        bottomTextField.textAlignment = .center
+        bottomTextField.text = "BOTTOM"
+        bottomTextField.delegate = self
+        bottomTextField.backgroundColor = UIColor.clear
+
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -47,6 +70,15 @@ class ViewController: UIViewController,  UIImagePickerControllerDelegate, UINavi
 
     override func viewWillAppear(_ animated: Bool) {
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 
