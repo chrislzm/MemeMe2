@@ -40,21 +40,25 @@
                                     <constraint firstAttribute="height" constant="44" id="AOV-5l-eax"/>
                                 </constraints>
                                 <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="lt5-FA-Wxr"/>
+                                    <barButtonItem systemItem="camera" id="eXj-Sq-uUX">
+                                        <connections>
+                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="PyU-Is-JQ3"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Dqm-sL-sYk"/>
                                     <barButtonItem title="Album" id="5Tj-ZK-zla">
                                         <connections>
                                             <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="03o-wg-Vga"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Camera" id="eXj-Sq-uUX">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="WlK-Gd-WfM"/>
+                                    <barButtonItem systemItem="action" id="igx-z7-kee">
                                         <connections>
-                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="PyU-Is-JQ3"/>
+                                            <action selector="shareMeme:" destination="BYZ-38-t0r" id="Ww6-FA-KYi"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Share" id="Jcc-Xp-Vk0">
-                                        <connections>
-                                            <action selector="shareMeme:" destination="BYZ-38-t0r" id="KL2-Xb-1RP"/>
-                                        </connections>
-                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="JG0-y1-MWn"/>
                                 </items>
                             </toolbar>
                             <textField clipsSubviews="YES" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mtl-gW-QgW">
@@ -73,7 +77,6 @@
                             <constraint firstAttribute="trailing" secondItem="C8z-VF-pZX" secondAttribute="trailing" id="0sb-9S-loh"/>
                             <constraint firstItem="g1v-CT-Xzd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="1fS-rH-hss"/>
                             <constraint firstItem="M3j-cL-6F1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="DDd-F3-dux"/>
-                            <constraint firstItem="M3j-cL-6F1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Iba-Ha-bhK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Mtl-gW-QgW" secondAttribute="trailing" id="K7Z-49-dDf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="g1v-CT-Xzd" secondAttribute="trailing" id="Ufu-qn-PmV"/>
                             <constraint firstItem="Mtl-gW-QgW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-122" id="YFd-Ta-BMD"/>
@@ -83,14 +86,15 @@
                             <constraint firstItem="C8z-VF-pZX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rat-Kp-rr4"/>
                             <constraint firstItem="C8z-VF-pZX" firstAttribute="top" secondItem="M3j-cL-6F1" secondAttribute="bottom" id="tA3-Bx-c5r"/>
                             <constraint firstItem="g1v-CT-Xzd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="78" id="wsm-hA-5Z9"/>
+                            <constraint firstItem="M3j-cL-6F1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="xo6-LS-WW0"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="bottomTextField" destination="Mtl-gW-QgW" id="lQa-xN-jsf"/>
+                        <outlet property="bottomToolBar" destination="C8z-VF-pZX" id="J8K-es-QMr"/>
                         <outlet property="cameraButton" destination="eXj-Sq-uUX" id="B0K-9o-Yi2"/>
                         <outlet property="imagePickerView" destination="M3j-cL-6F1" id="o5z-hL-McY"/>
-                        <outlet property="shareButton" destination="Jcc-Xp-Vk0" id="fj0-Yw-Pcv"/>
-                        <outlet property="toolBar" destination="C8z-VF-pZX" id="JP5-SM-v73"/>
+                        <outlet property="shareButton" destination="igx-z7-kee" id="c0Q-Ls-vA8"/>
                         <outlet property="topTextField" destination="g1v-CT-Xzd" id="IBk-oI-ofg"/>
                     </connections>
                 </viewController>

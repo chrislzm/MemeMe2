@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 struct Meme {
     var topText:String
     var bottomText:String
@@ -21,7 +20,7 @@ class ViewController: UIViewController,  UIImagePickerControllerDelegate, UINavi
     // MARK: Properties
     
     var shouldShiftScreenForKeyboard:Bool!
-    
+
     // MARK: Outlets
     
     @IBOutlet weak var imagePickerView: UIImageView!
@@ -29,7 +28,7 @@ class ViewController: UIViewController,  UIImagePickerControllerDelegate, UINavi
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
-    @IBOutlet weak var toolBar: UIToolbar!
+    @IBOutlet weak var bottomToolBar: UIToolbar!
     
     // MARK: Actions
     
@@ -48,11 +47,19 @@ class ViewController: UIViewController,  UIImagePickerControllerDelegate, UINavi
     }
 
     @IBAction func shareMeme(_ sender: Any) {
-        let meme = generateMemedImage()
-        let activityController = UIActivityViewController(activityItems: [meme], applicationActivities: nil)
+        let memedImage = generateMemedImage()
+        let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+       
         present(activityController, animated: true, completion: nil)
+
+        // Save meme object 
+        activityController.completionWithItemsHandler = { (activity:UIActivityType?, completed:Bool, returnedItems:[Any]?, activityError:Error?) -> Void in
+            if completed {
+                self.save(memedImage)
+            }
+        }
     }
-    
+
     // MARK: Text field delegate methods
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
@@ -64,7 +71,7 @@ class ViewController: UIViewController,  UIImagePickerControllerDelegate, UINavi
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        // If we are editing the bottom text field (whose tag==1), then set flag to true
+        // If we are editing the bottom text field (whose tag==1), then set flag to true                                                                                                                                                                
         shouldShiftScreenForKeyboard = textField.tag == 1
         return true
     }
@@ -155,26 +162,24 @@ class ViewController: UIViewController,  UIImagePickerControllerDelegate, UINavi
     
     // MARK: Other methods
     
-    func save() {
-        // Create the meme
-        let memedImage = generateMemedImage()
-        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
+    func save(_ memedImage:UIImage) {
+        let theMeme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
     }
     
     func generateMemedImage() -> UIImage {
         
-        // Hide navbar and toolbar
-        toolBar.isHidden = true
+        // Hide navbar and toolbars
+        bottomToolBar.isHidden = true
         navigationController?.isNavigationBarHidden = true
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
-        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        let memedImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
     
         // Show navbar and toolbar
-        toolBar.isHidden = false
+        bottomToolBar.isHidden = false
         navigationController?.isNavigationBarHidden = false
         
         return memedImage
