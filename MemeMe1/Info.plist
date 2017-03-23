@@ -34,5 +34,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We will access your photos in order to add a Meme</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Take a picture so you can add a Meme to it!</string>
 </dict>
 </plist>
