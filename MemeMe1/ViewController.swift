@@ -18,10 +18,15 @@ struct Meme {
 
 class ViewController: UIViewController,  UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
+    // MARK: Properties
+    
+    var shouldShiftScreenForKeyboard:Bool!
+    
     // MARK: Outlets
     
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var toolBar: UIToolbar!
@@ -42,6 +47,12 @@ class ViewController: UIViewController,  UIImagePickerControllerDelegate, UINavi
         present(imagePicker, animated: true, completion: nil)
     }
 
+    @IBAction func shareMeme(_ sender: Any) {
+        let meme = generateMemedImage()
+        let activityController = UIActivityViewController(activityItems: [meme], applicationActivities: nil)
+        present(activityController, animated: true, completion: nil)
+    }
+    
     // MARK: Text field delegate methods
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
@@ -49,6 +60,12 @@ class ViewController: UIViewController,  UIImagePickerControllerDelegate, UINavi
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        // If we are editing the bottom text field (whose tag==1), then set flag to true
+        shouldShiftScreenForKeyboard = textField.tag == 1
         return true
     }
     
@@ -63,6 +80,9 @@ class ViewController: UIViewController,  UIImagePickerControllerDelegate, UINavi
         if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             imagePickerView.image = image
         }
+
+        // Allow sharing now that we've loaded a picture
+        shareButton.isEnabled = true
     }
     
     // MARK: ViewController methods
@@ -87,6 +107,8 @@ class ViewController: UIViewController,  UIImagePickerControllerDelegate, UINavi
         bottomTextField.text = "BOTTOM"
         bottomTextField.delegate = self
         bottomTextField.backgroundColor = UIColor.clear
+        
+        shareButton.isEnabled = false
         
     }
     
@@ -114,16 +136,17 @@ class ViewController: UIViewController,  UIImagePickerControllerDelegate, UINavi
     }
     
     func keyboardWillShow(_ notification:Notification) {
-        
-        view.frame.origin.y -= getKeyboardHeight(notification)
+        if(shouldShiftScreenForKeyboard!) {
+            view.frame.origin.y -= getKeyboardHeight(notification)
+        }
     }
     
     func keyboardWillHide(_ notification:Notification) {
-        
-        view.frame.origin.y = 0
+        if(shouldShiftScreenForKeyboard!) {
+            view.frame.origin.y = 0
+        }
     }
 
-    
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
