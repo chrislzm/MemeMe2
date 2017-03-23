@@ -8,6 +8,14 @@
 
 import UIKit
 
+
+struct Meme {
+    var topText:String
+    var bottomText:String
+    var originalImage:UIImage
+    var memedImage:UIImage
+}
+
 class ViewController: UIViewController,  UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     // MARK: Outlets
@@ -16,6 +24,7 @@ class ViewController: UIViewController,  UIImagePickerControllerDelegate, UINavi
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    @IBOutlet weak var toolBar: UIToolbar!
     
     // MARK: Actions
     
@@ -119,6 +128,33 @@ class ViewController: UIViewController,  UIImagePickerControllerDelegate, UINavi
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         return keyboardSize.cgRectValue.height
+    }
+    
+    // MARK: Other methods
+    
+    func save() {
+        // Create the meme
+        let memedImage = generateMemedImage()
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
+    }
+    
+    func generateMemedImage() -> UIImage {
+        
+        // Hide navbar and toolbar
+        toolBar.isHidden = true
+        navigationController?.isNavigationBarHidden = true
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+    
+        // Show navbar and toolbar
+        toolBar.isHidden = false
+        navigationController?.isNavigationBarHidden = false
+        
+        return memedImage
     }
 }
 
