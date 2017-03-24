@@ -1,21 +1,12 @@
 //
-//  ViewController.swift
-//  playground
+//  MemeV1ViewController.swift
+//  For Meme v1.0 Project
 //
 //  Created by Chris Leung on 3/22/17.
 //  Copyright © 2017 Chris Leung. All rights reserved.
 //
 
 import UIKit
-
-// MARK: Meme struct for saving meme objects
-
-struct Meme {
-    var topText:String
-    var bottomText:String
-    var originalImage:UIImage
-    var memedImage:UIImage
-}
 
 // MARK: The Meme v1.0 viewcontroller
 
