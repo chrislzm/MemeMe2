@@ -54,9 +54,11 @@ class MemeV1ViewController: UIViewController,  UIImagePickerControllerDelegate, 
 
     // MARK: Text field delegate methods
     
-    // Clears text field when we begin editing it
+    // Clears text field only when the default text is present
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.text = ""
+        if textField.text == "TOP" || textField.text == "BOTTOM" {
+            textField.text = ""
+        }
     }
     
     // Dismisses keyboard when we hit enter/return
