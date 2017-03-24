@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Meme {
     let topText:String

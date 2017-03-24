@@ -46,6 +46,7 @@ class MemeV1ViewController: UIViewController,  UIImagePickerControllerDelegate, 
         present(activityController, animated: true, completion: nil)
         activityController.completionWithItemsHandler = { (activity:UIActivityType?, completed:Bool, returnedItems:[Any]?, activityError:Error?) -> Void in
             if completed {
+                self.alertSuccess(activity!)
                 self.save(memedImage)
             }
         }
@@ -116,6 +117,8 @@ class MemeV1ViewController: UIViewController,  UIImagePickerControllerDelegate, 
         unsubscribeFromKeyboardNotifications()
     }
 
+    // MARK: Notifications methods
+    
     func subscribeToKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
@@ -176,6 +179,31 @@ class MemeV1ViewController: UIViewController,  UIImagePickerControllerDelegate, 
     // Saves meme to a Meme object
     func save(_ memedImage:UIImage) {
         let theMeme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
+    }
+    
+    // Displays an alert that an action was successful
+    func alertSuccess(_ activityType:UIActivityType) {
+
+        var activityDescription:String? = nil
+        
+        switch activityType {
+        case UIActivityType.saveToCameraRoll:
+            activityDescription = "saved"
+        case UIActivityType.copyToPasteboard:
+            activityDescription = "copied"
+        default:
+            break
+        }
+        
+        // Show an alert if a description was assigned
+        if let activity = activityDescription {
+            let controller = UIAlertController()
+            controller.title = "Success!"
+            controller.message = "The meme was successfully \(activity)."
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: { action in self.dismiss(animated: true, completion: nil)})
+            controller.addAction(okAction)
+            present(controller, animated: true, completion: nil)
+        }
     }
     
     // Generates the memed image from the current meme on the screen
