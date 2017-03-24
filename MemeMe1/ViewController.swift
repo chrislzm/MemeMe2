@@ -35,23 +35,15 @@ class MemeV1ViewController: UIViewController,  UIImagePickerControllerDelegate, 
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var bottomToolBar: UIToolbar!
     @IBOutlet weak var instructions: UITextView!
-    
+
     // MARK: Actions for buttons
     
-    // Action for album button
-    @IBAction func pickAnImageFromAlbum(_ sender: Any) {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.sourceType = .photoLibrary
-        present(pickerController, animated: true, completion: nil)
+    @IBAction func openCamera(_ sender: Any) {
+        pickAnImageFrom(UIImagePickerControllerSourceType.camera)
     }
-    
-    // Action for camera button
-    @IBAction func pickAnImageFromCamera(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        present(imagePicker, animated: true, completion: nil)
+
+    @IBAction func openAlbums(_ sender: Any) {
+        pickAnImageFrom(UIImagePickerControllerSourceType.photoLibrary)
     }
 
     // Action for share button
@@ -180,6 +172,14 @@ class MemeV1ViewController: UIViewController,  UIImagePickerControllerDelegate, 
     }
     
     // MARK: Other methods
+    
+    // Opens the camera or albums
+    func pickAnImageFrom(_ source: UIImagePickerControllerSourceType) {
+        let pickerController = UIImagePickerController()
+        pickerController.sourceType = source
+        pickerController.delegate = self
+        present(pickerController, animated: true, completion: nil)
+    }
     
     // Saves meme to a Meme object
     func save(_ memedImage:UIImage) {
