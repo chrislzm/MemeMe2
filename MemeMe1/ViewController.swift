@@ -105,24 +105,8 @@ class MemeV1ViewController: UIViewController,  UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Setup meme text attributes
-        let memeTextAttributes:[String:Any] = [
-            NSStrokeColorAttributeName: UIColor.black,
-            NSForegroundColorAttributeName: UIColor.white,
-            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSStrokeWidthAttributeName: -3.0]
-
-        // Setup top text field properties
-        topTextField.defaultTextAttributes = memeTextAttributes
-        topTextField.textAlignment = .center
-        topTextField.delegate = self
-        topTextField.backgroundColor = UIColor.clear
-        
-        // Setup bottom text field properties
-        bottomTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.textAlignment = .center
-        bottomTextField.delegate = self
-        bottomTextField.backgroundColor = UIColor.clear
+        setupMemeTextField(topTextField)
+        setupMemeTextField(bottomTextField)
         
         // Share button disabled until we successfully load an image
         shareButton.isEnabled = false
@@ -179,6 +163,23 @@ class MemeV1ViewController: UIViewController,  UIImagePickerControllerDelegate, 
         pickerController.sourceType = source
         pickerController.delegate = self
         present(pickerController, animated: true, completion: nil)
+    }
+    
+    // Sets up a text field in meme style
+    func setupMemeTextField(_ textField:UITextField) {
+
+        // Setup text style
+        let memeTextAttributes:[String:Any] = [
+            NSStrokeColorAttributeName: UIColor.black,
+            NSForegroundColorAttributeName: UIColor.white,
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSStrokeWidthAttributeName: -3.0]
+        
+        // Set text field properties
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = .center
+        textField.delegate = self
+        textField.backgroundColor = UIColor.clear
     }
     
     // Saves meme to a Meme object
