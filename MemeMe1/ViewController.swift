@@ -131,8 +131,8 @@ class MemeV1ViewController: UIViewController,  UIImagePickerControllerDelegate, 
     }
     
     func unsubscribeFromKeyboardNotifications() {
-        
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
     }
     
     // Shifts frame upwards if we are editing the bottom text field
