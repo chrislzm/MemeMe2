@@ -1,6 +1,6 @@
 //
-//  MemeV1ViewController.swift
-//  For Meme v1.0 Project
+//  EditMemeViewController.swift
+//  For Meme v2.0 Project
 //
 //  Created by Chris Leung on 3/22/17.
 //  Copyright © 2017 Chris Leung. All rights reserved.
@@ -37,6 +37,10 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
         pickAnImageFrom(UIImagePickerControllerSourceType.photoLibrary)
     }
 
+    @IBAction func cancel(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     // Action for share button
     @IBAction func shareMeme(_ sender: Any) {
         
@@ -122,6 +126,10 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
         
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
 
     // MARK: Notifications methods

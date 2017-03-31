@@ -13,6 +13,7 @@
 		A56D4CE31E836D11006F6683 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A56D4CE11E836D11006F6683 /* Main.storyboard */; };
 		A56D4CE51E836D11006F6683 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A56D4CE41E836D11006F6683 /* Assets.xcassets */; };
 		A56D4CE81E836D11006F6683 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A56D4CE61E836D11006F6683 /* LaunchScreen.storyboard */; };
+		A5923BE21E8E0A3C0039FF3D /* SentMemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5923BE11E8E0A3C0039FF3D /* SentMemeTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		A56D4CE41E836D11006F6683 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A56D4CE71E836D11006F6683 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A56D4CE91E836D11006F6683 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5923BE11E8E0A3C0039FF3D /* SentMemeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMemeTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				A56D4CE61E836D11006F6683 /* LaunchScreen.storyboard */,
 				A56D4CE91E836D11006F6683 /* Info.plist */,
 				A5447AD91E84F3BA001A032D /* Meme.swift */,
+				A5923BE11E8E0A3C0039FF3D /* SentMemeTableViewController.swift */,
 			);
 			path = MemeMe2;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 				A5447ADA1E84F3BA001A032D /* Meme.swift in Sources */,
 				A56D4CE01E836D11006F6683 /* EditMemeViewController.swift in Sources */,
 				A56D4CDE1E836D11006F6683 /* AppDelegate.swift in Sources */,
+				A5923BE21E8E0A3C0039FF3D /* SentMemeTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
