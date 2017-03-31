@@ -99,6 +99,11 @@ class MemeV1ViewController: UIViewController,  UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /* Code to use later in order to load previously saved Memes
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        memes = appDelegate.memes
+        */
+        
         setupMemeTextField(topTextField)
         setupMemeTextField(bottomTextField)
         
@@ -178,9 +183,15 @@ class MemeV1ViewController: UIViewController,  UIImagePickerControllerDelegate, 
         textField.backgroundColor = UIColor.clear
     }
     
-    // Saves meme to a Meme object
+    // Saves meme to the Meme array in the app delegate
     func save(_ memedImage:UIImage) {
+        
+        // Create meme object
         let theMeme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
+        
+        // Add to array
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.memes.append(theMeme)
     }
     
     // Displays an alert that an action was successful
