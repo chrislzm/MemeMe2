@@ -47,13 +47,13 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
         let memedImage = generateMemedImage()
         
         let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
-        present(activityController, animated: true, completion: nil)
         activityController.completionWithItemsHandler = { (activity:UIActivityType?, completed:Bool, returnedItems:[Any]?, activityError:Error?) -> Void in
             if completed {
                 self.alertSuccess(activity!)
                 self.save(memedImage)
             }
         }
+        present(activityController, animated: true, completion: nil)
     }
 
     // MARK: Text field delegate methods
@@ -195,6 +195,7 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
         // Add to array
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.memes.append(theMeme)
+        print("Appended. Count: \(appDelegate.memes.count)")
     }
     
     // Displays an alert that an action was successful

@@ -8,17 +8,24 @@
 
 import UIKit
 
-class SentMemeTableViewController: UITableView, UITableViewDataSource {
+class SentMemeTableViewController: UITableViewController {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    var memes:[Meme]!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // Get the array of memes
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let memes = appDelegate.memes
+        memes = appDelegate.memes
+        
+        // Reload data (we may have created a new meme)
+        self.tableView.reloadData()
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let memes = appDelegate.memes
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell")!
         let memeRow = memes[(indexPath as NSIndexPath).row]
         cell.textLabel?.text = memeRow.topText + " " + memeRow.bottomText

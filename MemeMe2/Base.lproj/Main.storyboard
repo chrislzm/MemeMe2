@@ -45,10 +45,10 @@
             </objects>
             <point key="canvasLocation" x="-1394" y="-400"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Sent Meme Table View Controller-->
         <scene sceneID="Vxg-1I-Xat">
             <objects>
-                <tableViewController id="36M-cB-XIS" sceneMemberID="viewController">
+                <tableViewController id="36M-cB-XIS" customClass="SentMemeTableViewController" customModule="MemeMe2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="edi-5v-i67">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -278,6 +278,6 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PMs-17-yCM"/>
+        <segue reference="y4f-GO-RAI"/>
     </inferredMetricsTieBreakers>
 </document>
