@@ -8,7 +8,7 @@
 
 import UIKit
 
-// MARK: The Meme v1.0 viewcontroller
+// MARK: The Meme v2.0 viewcontroller
 
 class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
@@ -102,12 +102,7 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        /* Code to use later in order to load previously saved Memes
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        memes = appDelegate.memes
-        */
-        
+
         setupMemeTextField(topTextField)
         setupMemeTextField(bottomTextField)
         
