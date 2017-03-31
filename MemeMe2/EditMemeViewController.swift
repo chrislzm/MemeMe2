@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: The Meme v1.0 viewcontroller
 
-class MemeV1ViewController: UIViewController,  UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     // MARK: Properties
     
