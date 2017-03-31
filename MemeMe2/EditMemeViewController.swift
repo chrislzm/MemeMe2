@@ -15,7 +15,7 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
     // MARK: Properties
     
     // editingBottomTextField is true when we are editing the bottom text field
-    var editingBottomTextField:Bool!
+    var editingBottomTextField = false
 
     // MARK: Outlets
     
@@ -24,6 +24,7 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    @IBOutlet weak var topToolBar: UIToolbar!
     @IBOutlet weak var bottomToolBar: UIToolbar!
     @IBOutlet weak var instructions: UITextView!
 
@@ -141,14 +142,14 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
     
     // Shifts frame upwards if we are editing the bottom text field
     func keyboardWillShow(_ notification:Notification) {
-        if(editingBottomTextField!) {
+        if(editingBottomTextField) {
             view.frame.origin.y -= getKeyboardHeight(notification)
         }
     }
 
     // Shifts frame back if we were editing the bottom text field
     func keyboardWillHide(_ notification:Notification) {
-        if(editingBottomTextField!) {
+        if(editingBottomTextField) {
             view.frame.origin.y = 0
         }
     }
@@ -227,6 +228,7 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
     func generateMemedImage() -> UIImage {
         
         // Hide navbar and toolbars
+        topToolBar.isHidden = true
         bottomToolBar.isHidden = true
         navigationController?.isNavigationBarHidden = true
         
@@ -237,6 +239,7 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
         UIGraphicsEndImageContext()
     
         // Show navbar and toolbar
+        topToolBar.isHidden = false
         bottomToolBar.isHidden = false
         navigationController?.isNavigationBarHidden = false
         
