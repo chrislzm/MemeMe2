@@ -18,7 +18,7 @@ class SentMemeTableViewController: UITableViewController {
         // Get the updated array of memes
         memes = getMemes()
         
-        // Reload data (we may have created a new meme)
+        // Force reload data
         self.tableView.reloadData()
     }
 
@@ -32,5 +32,16 @@ class SentMemeTableViewController: UITableViewController {
         cell.textLabel?.text = memeRow.topText + " " + memeRow.bottomText
         cell.imageView?.image = memeRow.memedImage
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Grab the DetailVC from Storyboard
+        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "SentMemeDetailViewController") as! SentMemeDetailViewController
+        
+        //Populate view controller with data from the selected item
+        detailController.sentMeme = memes[indexPath.row]
+            
+        // Present the view controller using navigation
+        navigationController!.pushViewController(detailController, animated: true)
     }
 }

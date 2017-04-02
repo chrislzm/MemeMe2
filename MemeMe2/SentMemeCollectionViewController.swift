@@ -44,7 +44,7 @@ class SentMemeCollectionViewController: UICollectionViewController {
         // Get the updated array of memes
         memes = getMemes()
         
-        // Reload data (we may have created a new meme)
+        // Force reload data
         self.collectionView?.reloadData()
     }
     
@@ -65,8 +65,19 @@ class SentMemeCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as! SentMemeCollectionViewCell
         let meme = memes[indexPath.row]
-        cell.image.image = meme.memedImage
+        cell.sentMemeImageView.image = meme.memedImage
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath:IndexPath) {
+        // Grab the DetailVC from Storyboard
+        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "SentMemeDetailViewController") as! SentMemeDetailViewController
+        
+        //Populate view controller with data from the selected item
+        detailController.sentMeme = memes[indexPath.row]
+
+        // Present the view controller using navigation
+        navigationController!.pushViewController(detailController, animated: true)
     }
     
     func setFlowLayoutForVerticalOrientation() {

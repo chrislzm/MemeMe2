@@ -131,7 +131,7 @@
                                     <constraint firstItem="kRn-hs-IUf" firstAttribute="top" secondItem="dFI-2p-tim" secondAttribute="top" id="zoX-Vr-qwd"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="image" destination="kRn-hs-IUf" id="6jM-Zt-BEl"/>
+                                    <outlet property="sentMemeImageView" destination="kRn-hs-IUf" id="EwG-ae-ma1"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -154,6 +154,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MZR-71-JpY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-559.20000000000005" y="646.32683658170924"/>
+        </scene>
+        <!--Sent Meme Detail View Controller-->
+        <scene sceneID="8Nr-zT-0mR">
+            <objects>
+                <viewController storyboardIdentifier="SentMemeDetailViewController" id="9CE-Df-axn" customClass="SentMemeDetailViewController" customModule="MemeMe2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aOk-QK-8o0"/>
+                        <viewControllerLayoutGuide type="bottom" id="bYc-EP-M4J"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9a5-7m-CV6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y3w-iA-6UM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="y3w-iA-6UM" secondAttribute="trailing" id="Hlr-rR-9zS"/>
+                            <constraint firstItem="y3w-iA-6UM" firstAttribute="top" secondItem="9a5-7m-CV6" secondAttribute="topMargin" id="MgR-ls-Q4B"/>
+                            <constraint firstItem="y3w-iA-6UM" firstAttribute="leading" secondItem="9a5-7m-CV6" secondAttribute="leading" id="hSg-ae-mx1"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="y3w-iA-6UM" secondAttribute="bottom" id="xsU-Fi-Nus"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="sentMemeImageView" destination="y3w-iA-6UM" id="Khf-ok-8jp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jbc-XY-nA7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="580" y="644.52773613193403"/>
         </scene>
         <!--Edit Meme View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -287,7 +319,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="607" y="109"/>
+            <point key="canvasLocation" x="580" y="-402"/>
         </scene>
     </scenes>
     <resources>
