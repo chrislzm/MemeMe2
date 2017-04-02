@@ -101,30 +101,38 @@
         <scene sceneID="ixB-wa-mvL">
             <objects>
                 <collectionViewController id="207-OQ-FMZ" customClass="SentMemeCollectionViewController" customModule="MemeMe2" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="ajH-CL-YHa">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ajH-CL-YHa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vnR-8u-Hbx">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="163" height="154"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MemeCollectionCell" reuseIdentifier="MemeCollectionViewCell" id="dFI-2p-tim">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MemeCollectionViewCell" id="dFI-2p-tim" customClass="SentMemeCollectionViewCell" customModule="MemeMe2" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="163" height="154"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="163" height="154"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ty7-Ge-Sp6">
-                                            <rect key="frame" x="-122" y="-39" width="240" height="128"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kRn-hs-IUf">
+                                            <rect key="frame" x="8" y="8" width="147" height="138"/>
                                         </imageView>
                                     </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottomMargin" secondItem="kRn-hs-IUf" secondAttribute="bottom" id="AA9-iG-vTQ"/>
+                                    <constraint firstItem="kRn-hs-IUf" firstAttribute="leading" secondItem="dFI-2p-tim" secondAttribute="leadingMargin" id="GgW-Za-uCb"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="kRn-hs-IUf" secondAttribute="trailing" id="gh6-5p-WXR"/>
+                                    <constraint firstItem="kRn-hs-IUf" firstAttribute="top" secondItem="dFI-2p-tim" secondAttribute="topMargin" id="zIw-UO-V2G"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="image" destination="kRn-hs-IUf" id="6jM-Zt-BEl"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -139,6 +147,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="flowLayout" destination="vnR-8u-Hbx" id="VoJ-Pt-oh5"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MZR-71-JpY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
