@@ -119,16 +119,16 @@
                                     <rect key="frame" x="0.0" y="0.0" width="163" height="154"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kRn-hs-IUf">
-                                            <rect key="frame" x="8" y="8" width="147" height="138"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kRn-hs-IUf">
+                                            <rect key="frame" x="0.0" y="0.0" width="163" height="154"/>
                                         </imageView>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="bottomMargin" secondItem="kRn-hs-IUf" secondAttribute="bottom" id="AA9-iG-vTQ"/>
-                                    <constraint firstItem="kRn-hs-IUf" firstAttribute="leading" secondItem="dFI-2p-tim" secondAttribute="leadingMargin" id="GgW-Za-uCb"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="kRn-hs-IUf" secondAttribute="trailing" id="gh6-5p-WXR"/>
-                                    <constraint firstItem="kRn-hs-IUf" firstAttribute="top" secondItem="dFI-2p-tim" secondAttribute="topMargin" id="zIw-UO-V2G"/>
+                                    <constraint firstItem="kRn-hs-IUf" firstAttribute="leading" secondItem="dFI-2p-tim" secondAttribute="leading" id="M17-Wg-QIy"/>
+                                    <constraint firstAttribute="bottom" secondItem="kRn-hs-IUf" secondAttribute="bottom" id="Rup-cJ-JVq"/>
+                                    <constraint firstAttribute="trailing" secondItem="kRn-hs-IUf" secondAttribute="trailing" id="SPL-WI-uep"/>
+                                    <constraint firstItem="kRn-hs-IUf" firstAttribute="top" secondItem="dFI-2p-tim" secondAttribute="top" id="zoX-Vr-qwd"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="image" destination="kRn-hs-IUf" id="6jM-Zt-BEl"/>

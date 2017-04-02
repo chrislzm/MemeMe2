@@ -66,14 +66,14 @@
 			children = (
 				A56D4CDD1E836D11006F6683 /* AppDelegate.swift */,
 				A56D4CDF1E836D11006F6683 /* EditMemeViewController.swift */,
+				A5923BE11E8E0A3C0039FF3D /* SentMemeTableViewController.swift */,
+				A51084591E90AD09006EC598 /* SentMemeCollectionViewController.swift */,
+				A510845B1E90BF79006EC598 /* SentMemeCollectionViewCell.swift */,
 				A56D4CE11E836D11006F6683 /* Main.storyboard */,
 				A56D4CE41E836D11006F6683 /* Assets.xcassets */,
 				A56D4CE61E836D11006F6683 /* LaunchScreen.storyboard */,
 				A56D4CE91E836D11006F6683 /* Info.plist */,
 				A5447AD91E84F3BA001A032D /* Meme.swift */,
-				A5923BE11E8E0A3C0039FF3D /* SentMemeTableViewController.swift */,
-				A51084591E90AD09006EC598 /* SentMemeCollectionViewController.swift */,
-				A510845B1E90BF79006EC598 /* SentMemeCollectionViewCell.swift */,
 				A5A096FD1E8E25A600BE21C2 /* ProtocolsAndExtensions.swift */,
 			);
 			path = MemeMe2;

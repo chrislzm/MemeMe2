@@ -13,6 +13,8 @@ class SentMemeTableViewController: UITableViewController {
     var memes:[Meme]!
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
         // Get the updated array of memes
         memes = getMemes()
         
