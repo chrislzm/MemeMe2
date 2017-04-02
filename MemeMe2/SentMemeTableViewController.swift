@@ -13,9 +13,8 @@ class SentMemeTableViewController: UITableViewController {
     var memes:[Meme]!
     
     override func viewWillAppear(_ animated: Bool) {
-        // Get the array of memes
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        memes = appDelegate.memes
+        // Get the updated array of memes
+        memes = getMemes()
         
         // Reload data (we may have created a new meme)
         self.tableView.reloadData()

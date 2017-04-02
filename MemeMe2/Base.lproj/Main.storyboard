@@ -97,11 +97,11 @@
             </objects>
             <point key="canvasLocation" x="-1394" y="648"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Sent Meme Collection View Controller-->
         <scene sceneID="ixB-wa-mvL">
             <objects>
-                <collectionViewController id="207-OQ-FMZ" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ajH-CL-YHa">
+                <collectionViewController id="207-OQ-FMZ" customClass="SentMemeCollectionViewController" customModule="MemeMe2" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="ajH-CL-YHa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -118,6 +118,12 @@
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ty7-Ge-Sp6">
+                                            <rect key="frame" x="-122" y="-39" width="240" height="128"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
                                 </view>
                             </collectionViewCell>
                         </cells>
@@ -136,7 +142,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MZR-71-JpY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-559" y="647"/>
+            <point key="canvasLocation" x="-559.20000000000005" y="646.32683658170924"/>
         </scene>
         <!--Edit Meme View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -278,6 +284,6 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="y4f-GO-RAI"/>
+        <segue reference="PMs-17-yCM"/>
     </inferredMetricsTieBreakers>
 </document>
