@@ -20,6 +20,16 @@ class SentMemeTableViewController: UITableViewController {
         
         // Force reload data
         self.tableView.reloadData()
+        
+        // If we have no memes, present the Edit Meme view
+        if memes.count == 0 {
+            let storyboard = UIStoryboard (name: "Main", bundle: nil)
+            let editMemeVC = storyboard.instantiateViewController(withIdentifier: "EditMemeViewController")as! EditMemeViewController
+            
+            // Hide the cancel button this time since we have nowhere to cancel to
+            editMemeVC.removeCancelButton = true
+            self.present(editMemeVC, animated: true, completion: nil)
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

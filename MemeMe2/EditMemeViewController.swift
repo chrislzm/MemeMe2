@@ -14,6 +14,7 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
     
     // MARK: Properties
     
+    var removeCancelButton = false
     // editingBottomTextField is true when we are editing the bottom text field
     var editingBottomTextField = false
 
@@ -110,6 +111,13 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
         // Share button disabled until we successfully load an image
         shareButton.isEnabled = false
         
+        // Remove the cancel button if so has been requested
+        if removeCancelButton {
+            topToolBar.items?.removeLast()
+            
+            // Set back to false by default
+            removeCancelButton = false
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
