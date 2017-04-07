@@ -46,8 +46,8 @@ class SentMemeTableViewController: UITableViewController {
         cell.smallMeme.image = memeRow.originalImage
         cell.memeTop.text = memeRow.topText
         cell.memeBottom.text = memeRow.bottomText
-        setupMemeLabelandText(cell.smallMemeTop, memeRow.topText)
-        setupMemeLabelandText(cell.smallMemeBottom, memeRow.bottomText)
+        setupMemeLabelAttributes(cell.smallMemeTop, memeRow.topText)
+        setupMemeLabelAttributes(cell.smallMemeBottom, memeRow.bottomText)
         return cell
     }
     

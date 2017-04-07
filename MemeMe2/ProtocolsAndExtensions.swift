@@ -21,7 +21,7 @@ extension UIViewController {
     }
 
     // MARK: Set meme label font attributes
-    func setupMemeLabelandText(_ label:UILabel,_ text:String) {
+    func setupMemeLabelAttributes(_ label:UILabel,_ text:String) {
         
         // Set parameters here
         let fontSize:CGFloat = 20
@@ -37,7 +37,7 @@ extension UIViewController {
     }
     
     // MARK: Set editable meme text field attributes
-    func setupMemeTextField(_ textField:UITextField, _ delegate:UITextFieldDelegate) {
+    func setupMemeTextFieldAttributes(_ textField:UITextField, _ delegate:UITextFieldDelegate) {
         
         // Set parameters here
         let fontSize:CGFloat = 40

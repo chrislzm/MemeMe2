@@ -66,8 +66,8 @@ class SentMemeCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as! SentMemeCollectionViewCell
         let meme = memes[indexPath.row]
         cell.sentMemeImageView.image = meme.originalImage
-        setupMemeLabelandText(cell.sentMemeTop, meme.topText)
-        setupMemeLabelandText(cell.sentMemeBottom, meme.bottomText)
+        setupMemeLabelAttributes(cell.sentMemeTop, meme.topText)
+        setupMemeLabelAttributes(cell.sentMemeBottom, meme.bottomText)
         return cell
     }
     

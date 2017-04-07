@@ -16,6 +16,7 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
     
     var enableCancelButton = true
     var editingBottomTextField = false  // So we know to shift the screen up
+    var firstTimeLoadingImage = true         // So we know when to hide instructions & enable share button
     let defaultTopText = "TOP"
     let defaultBottomText = "BOTTOM"
     var memeImage:UIImage?              // Optional image that can be loaded instead of default
@@ -97,7 +98,11 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
         dismiss(animated: true, completion: nil)
         
         if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
-            setupMemeEditor(image, defaultTopText, defaultTopText)
+            if firstTimeLoadingImage {
+                firstTimeMemeEditorSetupWith(image)
+            } else {
+                imagePickerView.image = image
+            }
         }
     }
     
@@ -105,25 +110,31 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupMemeTextField(topTextField,self)
-        setupMemeTextField(bottomTextField,self)
+        
+        setupMemeTextFieldAttributes(topTextField,self)
+        setupMemeTextFieldAttributes(bottomTextField,self)
         
         // Share button disabled until we successfully load an image
         shareButton.isEnabled = false
         
         // Enable/disable the cancel button as has been requested
         cancelButton.isEnabled = enableCancelButton
+        
+        // Check if another class has requested a saved meme be loaded
+        if let memeImage = memeImage {
+            firstTimeMemeEditorSetupWith(memeImage)
+            topTextField.text = memeTopText
+            bottomTextField.text = memeBottomText
+        } else {
+            topTextField.text = defaultTopText
+            bottomTextField.text = defaultBottomText
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        
-        // Check if another class has requested a saved meme be loaded
-        if let memeImage = memeImage {
-            setupMemeEditor(memeImage, memeTopText!, memeBottomText!)
-        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -178,13 +189,13 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
         present(pickerController, animated: true, completion: nil)
     }
     
-    // Sets up the editor
-    func setupMemeEditor(_ image:UIImage, _ topText:String, _ bottomText:String) {
+    // Sets up the editor for the first time an image is loaded
+    func firstTimeMemeEditorSetupWith(_ image:UIImage) {
         imagePickerView.image = image
-        topTextField.text = topText
-        bottomTextField.text = bottomText
         instructions.isHidden = true
         shareButton.isEnabled = true
+        topTextField.isHidden = false
+        bottomTextField.isHidden = false
     }
     
     // Saves meme to the Meme array in the app delegate
