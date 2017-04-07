@@ -45,10 +45,10 @@
             </objects>
             <point key="canvasLocation" x="-1394" y="-400"/>
         </scene>
-        <!--Sent Meme Table View Controller-->
+        <!--Sent Memes-->
         <scene sceneID="Vxg-1I-Xat">
             <objects>
-                <tableViewController id="36M-cB-XIS" customClass="SentMemeTableViewController" customModule="MemeMe2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Sent Memes" id="36M-cB-XIS" customClass="SentMemeTableViewController" customModule="MemeMe2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="edi-5v-i67">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,7 +68,7 @@
                             <outlet property="delegate" destination="36M-cB-XIS" id="HAi-eH-uHV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="LMT-SM-4Wj">
+                    <navigationItem key="navigationItem" title="Sent Memes" id="LMT-SM-4Wj">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="CaZ-5f-EIC">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="presentation" id="y4f-GO-RAI"/>
@@ -97,10 +97,10 @@
             </objects>
             <point key="canvasLocation" x="-1394" y="648"/>
         </scene>
-        <!--Sent Meme Collection View Controller-->
+        <!--Sent Memes-->
         <scene sceneID="ixB-wa-mvL">
             <objects>
-                <collectionViewController id="207-OQ-FMZ" customClass="SentMemeCollectionViewController" customModule="MemeMe2" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController title="Sent Memes" id="207-OQ-FMZ" customClass="SentMemeCollectionViewController" customModule="MemeMe2" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ajH-CL-YHa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -140,7 +140,7 @@
                             <outlet property="delegate" destination="207-OQ-FMZ" id="bNU-B5-TJS"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="BUx-Mg-g38">
+                    <navigationItem key="navigationItem" title="Sent Memes" id="BUx-Mg-g38">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="kby-YX-vok">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="presentation" id="PMs-17-yCM"/>
@@ -328,6 +328,6 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="y4f-GO-RAI"/>
+        <segue reference="PMs-17-yCM"/>
     </inferredMetricsTieBreakers>
 </document>
