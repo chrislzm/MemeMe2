@@ -61,4 +61,12 @@ class SentMemeTableViewController: UITableViewController {
         // Present the view controller using navigation
         navigationController!.pushViewController(detailController, animated: true)
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            (UIApplication.shared.delegate as! AppDelegate).memes.remove(at: indexPath.row)
+            memes = getMemes()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
 }
