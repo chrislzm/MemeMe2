@@ -21,6 +21,16 @@ class SentMemeCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Get the updated array of memes
+        memes = getMemes()
+        
+        // Force reload data
+        self.collectionView?.reloadData()
         
         memeImageSpacing = 1.0
         
@@ -36,16 +46,6 @@ class SentMemeCollectionViewController: UICollectionViewController {
             memeImageHorizontalScreenDimensions = (view.frame.size.width - (memeImageSpacing*2.0)) / 3.0
             setFlowLayoutForHorizontalOrientation()
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // Get the updated array of memes
-        memes = getMemes()
-        
-        // Force reload data
-        self.collectionView?.reloadData()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -81,11 +81,15 @@ class SentMemeCollectionViewController: UICollectionViewController {
     }
     
     func setFlowLayoutForVerticalOrientation() {
-        flowLayout.itemSize = CGSize(width: memeImageVerticalScreenDimensions, height: memeImageVerticalScreenDimensions)
+        if let _ = flowLayout {
+            flowLayout.itemSize = CGSize(width: memeImageVerticalScreenDimensions, height: memeImageVerticalScreenDimensions)
+        }
     }
     
     func setFlowLayoutForHorizontalOrientation() {
-        flowLayout.itemSize = CGSize(width: memeImageHorizontalScreenDimensions, height: memeImageHorizontalScreenDimensions)
+        if let _ = flowLayout {
+            flowLayout.itemSize = CGSize(width: memeImageHorizontalScreenDimensions, height: memeImageHorizontalScreenDimensions)
+        }
     }
     
 }

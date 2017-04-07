@@ -37,10 +37,13 @@ class SentMemeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell") as! SentMemeTableViewCell
         let memeRow = memes[(indexPath as NSIndexPath).row]
-        cell.textLabel?.text = memeRow.topText + " " + memeRow.bottomText
-        cell.imageView?.image = memeRow.memedImage
+        cell.smallMeme.image = memeRow.originalImage
+        cell.memeTop.text = memeRow.topText
+        cell.memeBottom.text = memeRow.bottomText
+        setupLabelandText(cell.smallMemeTop, memeRow.topText)
+        setupLabelandText(cell.smallMemeBottom, memeRow.bottomText)
         return cell
     }
     
@@ -53,5 +56,23 @@ class SentMemeTableViewController: UITableViewController {
             
         // Present the view controller using navigation
         navigationController!.pushViewController(detailController, animated: true)
+    }
+    
+    // MARK: Helper functions
+    
+    // Sets up a text field in meme style
+    func setupLabelandText(_ label:UILabel,_ text:String) {
+        
+        // Setup text style
+        let memeTextAttributes:[String:Any] = [
+            NSStrokeColorAttributeName: UIColor.black,
+            NSForegroundColorAttributeName: UIColor.white,
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)!,
+            NSStrokeWidthAttributeName: -1.5]
+        
+        // Set text field properties
+        label.attributedText = NSAttributedString(string: text,attributes: memeTextAttributes)
+        label.textAlignment = .center
+        label.backgroundColor = UIColor.clear
     }
 }

@@ -1,13 +1,15 @@
 //
 //  ProtocolsAndExtensions.swift
 //  For Meme v2.0 Project
-//  Extends UIImagePickerController in order to hide the status bar
+//  Centralizes getMemes array access, extends UIImagePickerController to hide the status bar
 //
 //  Created by Chris Leung on 3/30/17.
 //  Copyright © 2017 Chris Leung. All rights reserved.
 //
 
 import UIKit
+
+// MARK: Get memes implementation, centralized here
 
 protocol GetMemes {
     func getMemes() -> [Meme]
@@ -22,6 +24,8 @@ extension GetMemes {
 
 extension UICollectionViewController: GetMemes {}
 extension UITableViewController: GetMemes {}
+
+// MARK: Code to disable status bar in UIImagePickerControllers
 
 extension UIImagePickerController {
     open override var childViewControllerForStatusBarHidden: UIViewController? {
