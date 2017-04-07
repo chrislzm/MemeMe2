@@ -9,21 +9,42 @@
 
 import UIKit
 
-// MARK: Get memes implementation, centralized here
 
-protocol GetMemes {
+// MARK: Meme helper methods used across classes
+
+protocol MemeHelpers {
     func getMemes() -> [Meme]
+    func setupMemeLabelandText(_ label:UILabel,_ text:String)
 }
 
-extension GetMemes {
+extension MemeHelpers {
+
+    // MARK: Get memes implementation, centralized here
+
     func getMemes() -> [Meme] {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.memes
     }
+
+    // MARK: Set meme label font attributes, centralized here
+    func setupMemeLabelandText(_ label:UILabel,_ text:String) {
+        
+        // Setup text style
+        let memeTextAttributes:[String:Any] = [
+            NSStrokeColorAttributeName: UIColor.black,
+            NSForegroundColorAttributeName: UIColor.white,
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)!,
+            NSStrokeWidthAttributeName: -1.5]
+        
+        // Set text field properties
+        label.attributedText = NSAttributedString(string: text,attributes: memeTextAttributes)
+        label.textAlignment = .center
+        label.backgroundColor = UIColor.clear
+    }
 }
 
-extension UICollectionViewController: GetMemes {}
-extension UITableViewController: GetMemes {}
+extension UICollectionViewController: MemeHelpers {}
+extension UITableViewController: MemeHelpers {}
 
 // MARK: Code to disable status bar in UIImagePickerControllers
 
@@ -35,4 +56,5 @@ extension UIImagePickerController {
     open override var prefersStatusBarHidden: Bool {
         return true
     }
+    
 }
