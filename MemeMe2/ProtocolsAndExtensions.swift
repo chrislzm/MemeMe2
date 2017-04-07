@@ -20,20 +20,45 @@ extension UIViewController {
         return appDelegate.memes
     }
 
-    // MARK: Set meme label font attributes, centralized here
+    // MARK: Set meme label font attributes
     func setupMemeLabelandText(_ label:UILabel,_ text:String) {
         
-        // Setup text style
-        let memeTextAttributes:[String:Any] = [
-            NSStrokeColorAttributeName: UIColor.black,
-            NSForegroundColorAttributeName: UIColor.white,
-            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)!,
-            NSStrokeWidthAttributeName: -1.5]
+        // Set parameters here
+        let fontSize:CGFloat = 20
+        let fontStrokeWidth:CGFloat = -1.5
+        let textAlignment:NSTextAlignment = .center
+        let backgroundColor:UIColor = .clear
+        let memeTextAttributes = sharedMemeTextAttributesWith(fontSize,fontStrokeWidth)
         
         // Set text field properties
         label.attributedText = NSAttributedString(string: text,attributes: memeTextAttributes)
-        label.textAlignment = .center
-        label.backgroundColor = UIColor.clear
+        label.textAlignment = textAlignment
+        label.backgroundColor = backgroundColor
+    }
+    
+    // MARK: Set editable meme text field attributes
+    func setupMemeTextField(_ textField:UITextField, _ delegate:UITextFieldDelegate) {
+        
+        // Set parameters here
+        let fontSize:CGFloat = 40
+        let fontStrokeWidth:CGFloat = -3.0
+        let textAlignment:NSTextAlignment = .center
+        let backgroundColor:UIColor = .clear
+        let memeTextAttributes = sharedMemeTextAttributesWith(fontSize,fontStrokeWidth)
+        
+        // Set text field properties
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = textAlignment
+        textField.delegate = delegate
+        textField.backgroundColor = backgroundColor
+    }
+    
+    // MARK: Shared meme text attributes (font size and stroke width must be passed in as arguments
+    func sharedMemeTextAttributesWith(_ fontSize:CGFloat, _ fontStrokeWidth:CGFloat) -> [String:Any] {
+        return [NSStrokeColorAttributeName: UIColor.black,
+                NSForegroundColorAttributeName: UIColor.white,
+                NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: fontSize)!,
+                NSStrokeWidthAttributeName: fontStrokeWidth]
     }
     
     // MARK: Prepares an edit meme view controller for presentation

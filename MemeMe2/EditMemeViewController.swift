@@ -105,8 +105,8 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupMemeTextField(topTextField)
-        setupMemeTextField(bottomTextField)
+        setupMemeTextField(topTextField,self)
+        setupMemeTextField(bottomTextField,self)
         
         // Share button disabled until we successfully load an image
         shareButton.isEnabled = false
@@ -185,24 +185,6 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
         bottomTextField.text = bottomText
         instructions.isHidden = true
         shareButton.isEnabled = true
-    }
-    
-    
-    // Sets up a text field in meme style
-    func setupMemeTextField(_ textField:UITextField) {
-
-        // Setup text style
-        let memeTextAttributes:[String:Any] = [
-            NSStrokeColorAttributeName: UIColor.black,
-            NSForegroundColorAttributeName: UIColor.white,
-            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSStrokeWidthAttributeName: -3.0]
-        
-        // Set text field properties
-        textField.defaultTextAttributes = memeTextAttributes
-        textField.textAlignment = .center
-        textField.delegate = self
-        textField.backgroundColor = UIColor.clear
     }
     
     // Saves meme to the Meme array in the app delegate
