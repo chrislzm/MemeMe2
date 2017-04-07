@@ -181,14 +181,14 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kRn-hs-IUf">
                                             <rect key="frame" x="0.0" y="0.0" width="163" height="154"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="dhi-x3-4rY">
-                                            <rect key="frame" x="8" y="18" width="147" height="39"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="a8L-KG-56y">
+                                            <rect key="frame" x="0.0" y="97" width="163" height="39"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="a8L-KG-56y">
-                                            <rect key="frame" x="8" y="97.5" width="147" height="38.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="dhi-x3-4rY">
+                                            <rect key="frame" x="0.0" y="18" width="163" height="39"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -198,15 +198,15 @@
                                 <constraints>
                                     <constraint firstItem="dhi-x3-4rY" firstAttribute="height" secondItem="kRn-hs-IUf" secondAttribute="height" multiplier="0.25" id="CEa-ii-ve6"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="a8L-KG-56y" secondAttribute="bottom" constant="10" id="GGK-0d-UxT"/>
-                                    <constraint firstItem="a8L-KG-56y" firstAttribute="leading" secondItem="dFI-2p-tim" secondAttribute="leadingMargin" id="Lux-IN-qdw"/>
                                     <constraint firstItem="kRn-hs-IUf" firstAttribute="leading" secondItem="dFI-2p-tim" secondAttribute="leading" id="M17-Wg-QIy"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="dhi-x3-4rY" secondAttribute="trailing" id="O5t-69-oWL"/>
+                                    <constraint firstAttribute="trailing" secondItem="a8L-KG-56y" secondAttribute="trailing" id="Q8M-gF-0jB"/>
                                     <constraint firstAttribute="bottom" secondItem="kRn-hs-IUf" secondAttribute="bottom" id="Rup-cJ-JVq"/>
                                     <constraint firstAttribute="trailing" secondItem="kRn-hs-IUf" secondAttribute="trailing" id="SPL-WI-uep"/>
                                     <constraint firstItem="dhi-x3-4rY" firstAttribute="top" secondItem="dFI-2p-tim" secondAttribute="topMargin" constant="10" id="WFU-xj-OoT"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="a8L-KG-56y" secondAttribute="trailing" id="ctc-Tk-KXy"/>
-                                    <constraint firstItem="dhi-x3-4rY" firstAttribute="leading" secondItem="dFI-2p-tim" secondAttribute="leadingMargin" id="eRD-Am-b2R"/>
+                                    <constraint firstItem="dhi-x3-4rY" firstAttribute="leading" secondItem="dFI-2p-tim" secondAttribute="leading" id="cdo-Ym-k58"/>
+                                    <constraint firstAttribute="trailing" secondItem="dhi-x3-4rY" secondAttribute="trailing" id="jee-sr-98t"/>
                                     <constraint firstItem="a8L-KG-56y" firstAttribute="height" secondItem="dFI-2p-tim" secondAttribute="height" multiplier="0.25" id="kYV-n5-HII"/>
+                                    <constraint firstItem="a8L-KG-56y" firstAttribute="leading" secondItem="dFI-2p-tim" secondAttribute="leading" id="rrv-BH-P7O"/>
                                     <constraint firstItem="kRn-hs-IUf" firstAttribute="top" secondItem="dFI-2p-tim" secondAttribute="top" id="zoX-Vr-qwd"/>
                                 </constraints>
                                 <connections>
