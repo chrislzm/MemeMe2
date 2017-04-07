@@ -12,15 +12,9 @@ import UIKit
 
 // MARK: Meme helper methods used across classes
 
-protocol MemeHelpers {
-    func getMemes() -> [Meme]
-    func setupMemeLabelandText(_ label:UILabel,_ text:String)
-}
-
-extension MemeHelpers {
+extension UIViewController {
 
     // MARK: Get memes implementation, centralized here
-
     func getMemes() -> [Meme] {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.memes
@@ -41,10 +35,17 @@ extension MemeHelpers {
         label.textAlignment = .center
         label.backgroundColor = UIColor.clear
     }
+    
+    // MARK: Prepares an edit meme view controller for presentation
+    func getEditMemeViewController(_ enableCancelButton:Bool) -> EditMemeViewController {
+        let storyboard = UIStoryboard (name: "Main", bundle: nil)
+        let editMemeVC = storyboard.instantiateViewController(withIdentifier: "EditMemeViewController")as! EditMemeViewController
+        
+        // Hide the cancel button this time since we have nowhere to cancel to
+        editMemeVC.enableCancelButton = enableCancelButton
+        return editMemeVC
+    }
 }
-
-extension UICollectionViewController: MemeHelpers {}
-extension UITableViewController: MemeHelpers {}
 
 // MARK: Code to disable status bar in UIImagePickerControllers
 

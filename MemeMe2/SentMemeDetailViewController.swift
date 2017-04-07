@@ -20,16 +20,31 @@ class SentMemeDetailViewController: UIViewController {
     
     // MARK: Life Cycle
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.plain, target: self, action: #selector(showEditMemeViewController))
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         sentMemeImageView.image = sentMeme.memedImage
-        self.tabBarController?.tabBar.isHidden = true
+        tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        self.tabBarController?.tabBar.isHidden = false
+    
+        tabBarController?.tabBar.isHidden = false
+    }
+    
+    func showEditMemeViewController() {
+        let emvc = getEditMemeViewController(true)
+        print("About to present")
+        emvc.memeTopText = sentMeme.topText
+        emvc.memeBottomText = sentMeme.bottomText
+        emvc.memeImage = sentMeme.originalImage
+        present(emvc, animated: true, completion: nil)
+        print ("Presented")
     }
 }

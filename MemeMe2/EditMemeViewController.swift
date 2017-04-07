@@ -15,9 +15,13 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
     // MARK: Properties
     
     var enableCancelButton = true
-    // editingBottomTextField is true when we are editing the bottom text field
-    var editingBottomTextField = false
-
+    var editingBottomTextField = false  // So we know to shift the screen up
+    let defaultTopText = "TOP"
+    let defaultBottomText = "BOTTOM"
+    var memeImage:UIImage?              // Optional image that can be loaded instead of default
+    var memeTopText:String?             // Optional text that can be loaded instead of default
+    var memeBottomText:String?          // Note: Only loaded only if optional image has been set
+    
     // MARK: Outlets
     
     @IBOutlet weak var imagePickerView: UIImageView!
@@ -63,7 +67,7 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
     
     // Clears text field only when the default text is present
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.text == "TOP" || textField.text == "BOTTOM" {
+        if textField.text == defaultTopText || textField.text == defaultBottomText {
             textField.text = ""
         }
     }
@@ -93,11 +97,7 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
         dismiss(animated: true, completion: nil)
         
         if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
-            imagePickerView.image = image
-            shareButton.isEnabled = true
-            topTextField.text = "TOP"
-            bottomTextField.text = "BOTTOM"
-            instructions.isHidden = true
+            setupMemeEditor(image, defaultTopText, defaultTopText)
         }
     }
     
@@ -105,7 +105,6 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupMemeTextField(topTextField)
         setupMemeTextField(bottomTextField)
         
@@ -120,6 +119,11 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        
+        // Check if another class has requested a saved meme be loaded
+        if let memeImage = memeImage {
+            setupMemeEditor(memeImage, memeTopText!, memeBottomText!)
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -173,6 +177,16 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
         pickerController.delegate = self
         present(pickerController, animated: true, completion: nil)
     }
+    
+    // Sets up the editor
+    func setupMemeEditor(_ image:UIImage, _ topText:String, _ bottomText:String) {
+        imagePickerView.image = image
+        topTextField.text = topText
+        bottomTextField.text = bottomText
+        instructions.isHidden = true
+        shareButton.isEnabled = true
+    }
+    
     
     // Sets up a text field in meme style
     func setupMemeTextField(_ textField:UITextField) {
