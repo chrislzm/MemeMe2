@@ -27,7 +27,7 @@ class SentMemeTableViewController: UITableViewController {
             let editMemeVC = storyboard.instantiateViewController(withIdentifier: "EditMemeViewController")as! EditMemeViewController
             
             // Hide the cancel button this time since we have nowhere to cancel to
-            editMemeVC.removeCancelButton = true
+            editMemeVC.enableCancelButton = false
             self.present(editMemeVC, animated: true, completion: nil)
         }
     }

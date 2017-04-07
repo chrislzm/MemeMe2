@@ -310,6 +310,7 @@
                         <outlet property="bottomTextField" destination="Mtl-gW-QgW" id="lQa-xN-jsf"/>
                         <outlet property="bottomToolBar" destination="C8z-VF-pZX" id="J8K-es-QMr"/>
                         <outlet property="cameraButton" destination="eXj-Sq-uUX" id="B0K-9o-Yi2"/>
+                        <outlet property="cancelButton" destination="R9n-8C-JbQ" id="D6J-0H-gQM"/>
                         <outlet property="imagePickerView" destination="M3j-cL-6F1" id="o5z-hL-McY"/>
                         <outlet property="instructions" destination="9k7-Qk-GJ5" id="7Ew-mC-lRb"/>
                         <outlet property="shareButton" destination="igx-z7-kee" id="c0Q-Ls-vA8"/>
