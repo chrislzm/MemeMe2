@@ -42,8 +42,8 @@ class SentMemeCollectionViewController: UICollectionViewController {
             memeImageHorizontalScreenDimensions = (view.frame.size.height - (memeImageSpacing*5.0)) / 6.0
             setFlowLayoutForVerticalOrientation()
         } else {
-            memeImageVerticalScreenDimensions = (view.frame.size.height - (memeImageSpacing*5.0)) / 6.0
-            memeImageHorizontalScreenDimensions = (view.frame.size.width - (memeImageSpacing*2.0)) / 3.0
+            memeImageVerticalScreenDimensions = (view.frame.size.width - (memeImageSpacing*5.0)) / 6.0
+            memeImageHorizontalScreenDimensions = (view.frame.size.height - (memeImageSpacing*2.0)) / 3.0
             setFlowLayoutForHorizontalOrientation()
         }
     }
