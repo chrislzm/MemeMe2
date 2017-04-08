@@ -14,11 +14,14 @@ class SentMemeCollectionViewController: UICollectionViewController {
     
     private var memes:[Meme]!
 
-    // MARK: Properties for flow layout
-    private var memeImageVerticalScreenDimensions:CGFloat!
-    private var memeImageHorizontalScreenDimensions:CGFloat!
-    private var memeImageSpacing:CGFloat!
+    // MARK: Constants and properties for flow layout
+    private let cellsPerRow:CGFloat = 3.0
+    private let cellsPerColumn:CGFloat = 5.0
+    private let cellSpacing:CGFloat = 1.0
+    private var cellWidthAndHeightForVerticalOrientation:CGFloat!
+    private var cellWidthAndHeightForHorizontalOrientation:CGFloat!
     
+    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -32,18 +35,18 @@ class SentMemeCollectionViewController: UICollectionViewController {
         // Force reload data
         self.collectionView?.reloadData()
         
-        memeImageSpacing = 1.0
-        
-        flowLayout.minimumInteritemSpacing = memeImageSpacing
-        flowLayout.minimumLineSpacing = memeImageSpacing
-        
+        flowLayout.minimumInteritemSpacing = cellSpacing
+        flowLayout.minimumLineSpacing = cellSpacing
+
+        // If screen is oriented vertically
         if view.frame.size.height > view.frame.size.width {
-            memeImageVerticalScreenDimensions = (view.frame.size.width - (memeImageSpacing*2.0)) / 3.0
-            memeImageHorizontalScreenDimensions = (view.frame.size.height - (memeImageSpacing*5.0)) / 6.0
+            cellWidthAndHeightForVerticalOrientation = (view.frame.size.width - (cellSpacing*(cellsPerRow-1))) / cellsPerRow
+            cellWidthAndHeightForHorizontalOrientation = (view.frame.size.height - (cellSpacing*(cellsPerColumn-1))) / cellsPerColumn
             setFlowLayoutForVerticalOrientation()
-        } else {
-            memeImageVerticalScreenDimensions = (view.frame.size.width - (memeImageSpacing*5.0)) / 6.0
-            memeImageHorizontalScreenDimensions = (view.frame.size.height - (memeImageSpacing*2.0)) / 3.0
+        } // Else, the screen is oriented horizontally, and the "width" is actually the longer side
+        else {
+            cellWidthAndHeightForVerticalOrientation = (view.frame.size.height - (cellSpacing*(cellsPerRow-1))) / cellsPerRow
+            cellWidthAndHeightForHorizontalOrientation = (view.frame.size.width - (cellSpacing*(cellsPerColumn-1))) / cellsPerColumn
             setFlowLayoutForHorizontalOrientation()
         }
     }
@@ -84,13 +87,13 @@ class SentMemeCollectionViewController: UICollectionViewController {
     
     func setFlowLayoutForVerticalOrientation() {
         if let _ = flowLayout {
-            flowLayout.itemSize = CGSize(width: memeImageVerticalScreenDimensions, height: memeImageVerticalScreenDimensions)
+            flowLayout.itemSize = CGSize(width: cellWidthAndHeightForVerticalOrientation, height: cellWidthAndHeightForVerticalOrientation)
         }
     }
     
     func setFlowLayoutForHorizontalOrientation() {
         if let _ = flowLayout {
-            flowLayout.itemSize = CGSize(width: memeImageHorizontalScreenDimensions, height: memeImageHorizontalScreenDimensions)
+            flowLayout.itemSize = CGSize(width: cellWidthAndHeightForHorizontalOrientation, height: cellWidthAndHeightForHorizontalOrientation)
         }
     }
     
