@@ -48,7 +48,7 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
     }
 
     @IBAction func cancel(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func shareMeme(_ sender: Any) {
@@ -244,7 +244,6 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
         // Hide navbar and toolbars
         topToolBar.isHidden = true
         bottomToolBar.isHidden = true
-        navigationController?.isNavigationBarHidden = true
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -255,7 +254,6 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
         // Show navbar and toolbar
         topToolBar.isHidden = false
         bottomToolBar.isHidden = false
-        navigationController?.isNavigationBarHidden = false
         
         return memedImage
     }
