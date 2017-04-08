@@ -54,7 +54,7 @@ class SentMemeDetailViewController: UIViewController {
         editMemeVC.memeTopText = sentMeme.topText
         editMemeVC.memeBottomText = sentMeme.bottomText
 
-        present(editMemeVC, animated: true, completion: nil)
+        present(editMemeVC, animated: true)
     }
     
     // Creates an edit meme view controller and and returns it

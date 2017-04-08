@@ -48,7 +48,7 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
     }
 
     @IBAction func cancel(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
     @IBAction func shareMeme(_ sender: Any) {
@@ -62,7 +62,7 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
                 self.save(memedImage)
             }
         }
-        present(activityController, animated: true, completion: nil)
+        present(activityController, animated: true)
     }
 
     // MARK: Text field delegate methods
@@ -91,12 +91,12 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
     
     // Does nothing if cancel button tapped
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
     // Loads the picture into the UIImageView and, if it's the first time loading an image, sets up the editing environment
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
         
         if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             if firstTimeLoadingImage {
@@ -190,7 +190,7 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
         let pickerController = UIImagePickerController()
         pickerController.sourceType = source
         pickerController.delegate = self
-        present(pickerController, animated: true, completion: nil)
+        present(pickerController, animated: true)
     }
     
     // Sets up the editor for the first time an image is loaded
@@ -232,9 +232,9 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
             let controller = UIAlertController()
             controller.title = "Success!"
             controller.message = "The meme was successfully \(activity)."
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: { action in self.dismiss(animated: true, completion: nil)})
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: { action in self.dismiss(animated: true)})
             controller.addAction(okAction)
-            present(controller, animated: true, completion: nil)
+            present(controller, animated: true)
         }
     }
     

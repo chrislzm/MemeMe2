@@ -43,7 +43,7 @@ class SentMemeTableViewController: UITableViewController {
             
             // Hide its cancel button since we have no saved memes to view anyway
             editMemeVC.enableCancelButton = false
-            self.present(editMemeVC, animated: true, completion: nil)
+            self.present(editMemeVC, animated: true)
         }
     }
 
