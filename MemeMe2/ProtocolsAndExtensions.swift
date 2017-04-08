@@ -14,7 +14,7 @@ import UIKit
 
 extension UIViewController {
 
-    // MARK: Get memes implementation, centralized here
+    // MARK: Get the current memes array
     func getMemes() -> [Meme] {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.memes
@@ -23,14 +23,14 @@ extension UIViewController {
     // MARK: Set meme label font attributes
     func setupMemeLabelAttributes(_ label:UILabel,_ text:String) {
         
-        // Set parameters here
+        // Modify parameters here and in sharedMemeTextAttributesWith method if you want to change meme font style in TableView and CollectionView
         let fontSize:CGFloat = 20
         let fontStrokeWidth:CGFloat = -1.5
         let textAlignment:NSTextAlignment = .center
         let backgroundColor:UIColor = .clear
-        let memeTextAttributes = sharedMemeTextAttributesWith(fontSize,fontStrokeWidth)
         
-        // Set text field properties
+        // Following code assigns parameters above
+        let memeTextAttributes = sharedMemeTextAttributesWith(fontSize,fontStrokeWidth)
         label.attributedText = NSAttributedString(string: text,attributes: memeTextAttributes)
         label.textAlignment = textAlignment
         label.backgroundColor = backgroundColor
@@ -39,21 +39,21 @@ extension UIViewController {
     // MARK: Set editable meme text field attributes
     func setupMemeTextFieldAttributes(_ textField:UITextField, _ delegate:UITextFieldDelegate) {
         
-        // Set parameters here
+        /// Modify parameters here and in sharedMemeTextAttributesWith method if you want to change meme font style in editor
         let fontSize:CGFloat = 40
         let fontStrokeWidth:CGFloat = -3.0
         let textAlignment:NSTextAlignment = .center
         let backgroundColor:UIColor = .clear
-        let memeTextAttributes = sharedMemeTextAttributesWith(fontSize,fontStrokeWidth)
         
-        // Set text field properties
+        // Following code assigns parameters above
+        let memeTextAttributes = sharedMemeTextAttributesWith(fontSize,fontStrokeWidth)
         textField.defaultTextAttributes = memeTextAttributes
         textField.textAlignment = textAlignment
         textField.delegate = delegate
         textField.backgroundColor = backgroundColor
     }
     
-    // MARK: Shared meme text attributes (font size and stroke width must be passed in as arguments
+    // MARK: Shared meme text attributes. These are properties shared by  Meme Editor, TableView, and CollectionView. Font size and stroke width must be passed in as arguments.
     func sharedMemeTextAttributesWith(_ fontSize:CGFloat, _ fontStrokeWidth:CGFloat) -> [String:Any] {
         return [NSStrokeColorAttributeName: UIColor.black,
                 NSForegroundColorAttributeName: UIColor.white,
@@ -61,7 +61,7 @@ extension UIViewController {
                 NSStrokeWidthAttributeName: fontStrokeWidth]
     }
     
-    // MARK: Prepares an edit meme view controller for presentation
+    // MARK: Creates an edit meme view controller and prepares it for presentation
     func getEditMemeViewController(_ enableCancelButton:Bool) -> EditMemeViewController {
         let storyboard = UIStoryboard (name: "Main", bundle: nil)
         let editMemeVC = storyboard.instantiateViewController(withIdentifier: "EditMemeViewController")as! EditMemeViewController
