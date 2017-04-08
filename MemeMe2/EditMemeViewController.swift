@@ -241,9 +241,8 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
     // Generates the memed image from the current meme on the screen
     func generateMemedImage() -> UIImage {
         
-        // Hide navbar and toolbars
-        topToolBar.isHidden = true
-        bottomToolBar.isHidden = true
+        // Hide toolbars
+        configureToolbars(hidden: true)
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -251,11 +250,16 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
         let memedImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
     
-        // Show navbar and toolbar
-        topToolBar.isHidden = false
-        bottomToolBar.isHidden = false
+        // Show toolbars
+        configureToolbars(hidden: false)
         
         return memedImage
+    }
+    
+    // Show or hide toolbars
+    func configureToolbars(hidden: Bool) {
+        topToolBar.isHidden = hidden
+        bottomToolBar.isHidden = hidden
     }
 
 }
