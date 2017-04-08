@@ -1,6 +1,7 @@
 //
 //  SentMemeTableViewController.swift
 //  For Meme v2.0 Project
+//  Implements a table view for listing all saved memes. Allows a saved meme to be viewed in detail (by tapping on it) and deleted (by left swiping on it.
 //
 //  Created by Chris Leung on 3/30/17.
 //  Copyright © 2017 Chris Leung. All rights reserved.
@@ -10,13 +11,15 @@ import UIKit
 
 class SentMemeTableViewController: UITableViewController {
     
+    // MARK: Properties
     var memes:[Meme]!
-
-    let tableRowsPerScreen:CGFloat = 7.0
+    let tableRowsPerScreen:CGFloat = 7.0    // Number of rows to display per screen length
+    
+    // MARK: Life cycle
     
     override func viewDidLoad() {
         
-        // Set consistent row height = screen length /tableRowsPerScreen
+        // Set a consistent row height equal to screen length/tableRowsPerScreen
         if view.frame.size.height > view.frame.size.width {
             tableView.rowHeight = view.frame.size.height / tableRowsPerScreen
         } else {
@@ -27,7 +30,7 @@ class SentMemeTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        // Get the updated array of memes
+        // Copy the updated array of memes
         memes = getMemes()
         
         // Force reload data
@@ -38,7 +41,7 @@ class SentMemeTableViewController: UITableViewController {
             let storyboard = UIStoryboard (name: "Main", bundle: nil)
             let editMemeVC = storyboard.instantiateViewController(withIdentifier: "EditMemeViewController")as! EditMemeViewController
             
-            // Hide the cancel button this time since we have nowhere to cancel to
+            // Hide its cancel button since we have no saved memes to view anyway
             editMemeVC.enableCancelButton = false
             self.present(editMemeVC, animated: true, completion: nil)
         }
@@ -54,8 +57,11 @@ class SentMemeTableViewController: UITableViewController {
         cell.smallMeme.image = memeRow.originalImage
         cell.memeTop.text = memeRow.topText
         cell.memeBottom.text = memeRow.bottomText
+        
+        // Setup the cell's meme text appearance (e.g. font size, style)
         setupMemeLabelAttributes(cell.smallMemeTop, memeRow.topText)
         setupMemeLabelAttributes(cell.smallMemeBottom, memeRow.bottomText)
+        
         return cell
     }
     
@@ -63,13 +69,14 @@ class SentMemeTableViewController: UITableViewController {
         // Grab the DetailVC from Storyboard
         let detailController = self.storyboard!.instantiateViewController(withIdentifier: "SentMemeDetailViewController") as! SentMemeDetailViewController
         
-        //Populate view controller with data from the selected item
+        // Populate view controller with data from the selected item
         detailController.sentMeme = memes[indexPath.row]
             
         // Present the view controller using navigation
         navigationController!.pushViewController(detailController, animated: true)
     }
     
+    // Implements delete saved meme functionality
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             (UIApplication.shared.delegate as! AppDelegate).memes.remove(at: indexPath.row)

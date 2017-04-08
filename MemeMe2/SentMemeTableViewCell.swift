@@ -1,6 +1,7 @@
 //
 //  SentMemeTableViewCell.swift
-//  MemeMe2
+//  For Meme v2.0 Project
+//  Implements cell used in SentMemeTableViewController
 //
 //  Created by Chris Leung on 4/6/17.
 //  Copyright © 2017 Chris Leung. All rights reserved.

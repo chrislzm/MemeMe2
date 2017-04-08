@@ -1,6 +1,6 @@
 //
 //  EditMemeViewController.swift
-//  For Meme v2.0 Project
+//  Updated for Meme v2.0 Project
 //
 //  Created by Chris Leung on 3/22/17.
 //  Copyright © 2017 Chris Leung. All rights reserved.
@@ -14,14 +14,16 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
     
     // MARK: Properties
     
-    var enableCancelButton = true
-    var editingBottomTextField = false  // So we know to shift the screen up
-    var firstTimeLoadingImage = true         // So we know when to hide instructions & enable share button
-    let defaultTopText = "TOP"
-    let defaultBottomText = "BOTTOM"
-    var memeImage:UIImage?              // Optional image that can be loaded instead of default
-    var memeTopText:String?             // Optional text that can be loaded instead of default
-    var memeBottomText:String?          // Note: Only loaded only if optional image has been set
+    let defaultMemeTopText = "TOP"
+    let defaultMemeBottomText = "BOTTOM"
+    
+    var enableCancelButton = true       // Disabled when we have no saved memes to show in the other views
+    var editingBottomTextField = false  // When true, we will shift the screen up for the keyboard
+    var firstTimeLoadingImage = true    // Set to false after first image is loaded, hiding instructions and enabling share button
+
+    var memeImage:UIImage?              // Optional image that can be loaded (e.g. when editing a saved meme) instead of default behavior
+    var memeTopText:String?             // Optional text that can be loaded (e.g. when editing a saved meme) instead of default behavior
+    var memeBottomText:String?
     
     // MARK: Outlets
     
@@ -49,7 +51,6 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
         self.dismiss(animated: true, completion: nil)
     }
     
-    // Action for share button
     @IBAction func shareMeme(_ sender: Any) {
         
         let memedImage = generateMemedImage()
@@ -68,7 +69,7 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
     
     // Clears text field only when the default text is present
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.text == defaultTopText || textField.text == defaultBottomText {
+        if textField.text == defaultMemeTopText || textField.text == defaultMemeBottomText {
             textField.text = ""
         }
     }
@@ -93,7 +94,7 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
         dismiss(animated: true, completion: nil)
     }
     
-    // Loads the picture into the UIImageView and enables the sharing button
+    // Loads the picture into the UIImageView and, if it's the first time loading an image, sets up the editing environment
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         dismiss(animated: true, completion: nil)
         
@@ -106,11 +107,12 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
         }
     }
     
-    // MARK: ViewController methods
+    // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Setup text field attributes (e.g. font face, style)
         setupMemeTextFieldAttributes(topTextField,self)
         setupMemeTextFieldAttributes(bottomTextField,self)
         
@@ -123,11 +125,13 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
         // Check if another class has requested a saved meme be loaded
         if let memeImage = memeImage {
             firstTimeMemeEditorSetupWith(memeImage)
+            
+            // We assume that if an image has been passed along, its top text and bottom text have been sent too
             topTextField.text = memeTopText
             bottomTextField.text = memeBottomText
-        } else {
-            topTextField.text = defaultTopText
-            bottomTextField.text = defaultBottomText
+        } else { // Otherwise, just assign the default text to the text fields and don't load any image
+            topTextField.text = defaultMemeTopText
+            bottomTextField.text = defaultMemeBottomText
         }
     }
     
@@ -146,8 +150,8 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
     override var prefersStatusBarHidden: Bool {
         return true
     }
-
-    // MARK: Notifications methods
+    
+    // MARK: Notifications methods for shifting screen when keyboard appears
     
     func subscribeToKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
@@ -198,7 +202,7 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
         bottomTextField.isHidden = false
     }
     
-    // Saves meme to the Meme array in the app delegate
+    // Saves meme to the saved memes array in the app delegate
     func save(_ memedImage:UIImage) {
         
         // Create meme object
@@ -207,10 +211,9 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
         // Add to array
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.memes.append(theMeme)
-        print("Appended. Count: \(appDelegate.memes.count)")
     }
     
-    // Displays an alert that an action was successful
+    // Displays an alert for save and copy actions, which usually don't present any confirmation message
     func alertSuccess(_ activityType:UIActivityType) {
 
         var activityDescription:String? = nil
@@ -256,5 +259,6 @@ class EditMemeViewController: UIViewController,  UIImagePickerControllerDelegate
         
         return memedImage
     }
+
 }
 
