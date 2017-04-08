@@ -12,8 +12,16 @@ class SentMemeTableViewController: UITableViewController {
     
     var memes:[Meme]!
 
+    let tableRowsPerScreen:CGFloat = 7.0
+    
     override func viewDidLoad() {
-        tableView.rowHeight = view.frame.size.height / 7.0
+        
+        // Set consistent row height = screen length /tableRowsPerScreen
+        if view.frame.size.height > view.frame.size.width {
+            tableView.rowHeight = view.frame.size.height / tableRowsPerScreen
+        } else {
+            tableView.rowHeight = view.frame.size.width / tableRowsPerScreen
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
