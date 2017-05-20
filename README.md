@@ -19,5 +19,5 @@ How to Use
 
 Questions
 ---------
-* Create new issues on [GitHub repo](https://github.com/chrislzm/TimeAnalytics/issues) for any bugs found.
+* Create new issues on [GitHub repo](https://github.com/chrislzm/MemeMe2/issues) for any bugs found.
 * Contact [Chris Leung](https://github.com/chrislzm)
