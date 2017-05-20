@@ -16,6 +16,7 @@
 		A56D4CE31E836D11006F6683 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A56D4CE11E836D11006F6683 /* Main.storyboard */; };
 		A56D4CE51E836D11006F6683 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A56D4CE41E836D11006F6683 /* Assets.xcassets */; };
 		A56D4CE81E836D11006F6683 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A56D4CE61E836D11006F6683 /* LaunchScreen.storyboard */; };
+		A576D1BE1ECFCF8D00828E98 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A576D1BD1ECFCF8D00828E98 /* README.md */; };
 		A5923BE21E8E0A3C0039FF3D /* SentMemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5923BE11E8E0A3C0039FF3D /* SentMemeTableViewController.swift */; };
 		A5F386461E98B32800E443CE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F386451E98B32800E443CE /* Extensions.swift */; };
 		A5F94E051E972FBB00F22A09 /* SentMemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F94E041E972FBB00F22A09 /* SentMemeTableViewCell.swift */; };
@@ -33,6 +34,7 @@
 		A56D4CE41E836D11006F6683 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A56D4CE71E836D11006F6683 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A56D4CE91E836D11006F6683 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A576D1BD1ECFCF8D00828E98 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A5923BE11E8E0A3C0039FF3D /* SentMemeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMemeTableViewController.swift; sourceTree = "<group>"; };
 		A5F386451E98B32800E443CE /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A5F94E041E972FBB00F22A09 /* SentMemeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMemeTableViewCell.swift; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 		A56D4CD11E836D11006F6683 = {
 			isa = PBXGroup;
 			children = (
+				A576D1BD1ECFCF8D00828E98 /* README.md */,
 				A56D4CDC1E836D11006F6683 /* MemeMe2 */,
 				A56D4CDB1E836D11006F6683 /* Products */,
 			);
@@ -160,6 +163,7 @@
 			files = (
 				A565F3ED1E90D4CA007FBF22 /* SentMemeDetailViewController.swift in Sources */,
 				A5447ADA1E84F3BA001A032D /* Meme.swift in Sources */,
+				A576D1BE1ECFCF8D00828E98 /* README.md in Sources */,
 				A5F94E051E972FBB00F22A09 /* SentMemeTableViewCell.swift in Sources */,
 				A510845A1E90AD09006EC598 /* SentMemeCollectionViewController.swift in Sources */,
 				A5F386461E98B32800E443CE /* Extensions.swift in Sources */,
